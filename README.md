@@ -3,7 +3,7 @@ This repository is a light curve model of supernova (SN) precursors, by SN proge
 
 Main parameters: (1) compact object mass, (2) progenitor mass, (3) progenitor radii, (4) opacity, (5) ionization temperature, (6) initial CSM velocity normalized by progenitor escape velocity (xi parameter), (7) CSM mass, and (8) binary separation
 
-"prec_outburst_grid.py" calculates and outputs the characteristic quantities of the precursor (duration, luminosity and final CSM velocity), for a grid of CSM mass and orbital separation (normalized by progenitor radii). Each parameter takes typically 10 seconds to finish.
+"prec_outburst_grid.py" calculates and outputs the characteristic quantities of the precursor (duration, luminosity and final CSM velocity), for a grid of CSM mass and binary separation. Each parameter takes typically 10 seconds to finish.
 
 "prec_outburst_lc.py" outputs a time-dependent light curve for a given set of parameters.
 
