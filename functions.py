@@ -34,7 +34,7 @@ def rho_CSM(MCSM, a_bin, t, v_esc, xi, chi):
 def evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_BB, r_disk_in):
 	chi = (1.-Rstar/a_bin)**0.5
 	v_esc = (2.*constants.G*Mstar/Rstar)**0.5
-	v_orb = (2.*constants.G*(Mstar+MCO)/a_bin)**(0.5)
+	v_orb = (constants.G*(Mstar+MCO)/a_bin)**(0.5)
 	t_BH = a_bin/v_esc/xi
 	BH_flag = 0
 	print("MCSM=%g Msun, a_bin=%g Rstar, t_BH=%g day" % (MCSM/constants.Msun, a_bin/Rstar, t_BH/86400))
