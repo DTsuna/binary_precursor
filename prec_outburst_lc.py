@@ -31,6 +31,7 @@ T_ion = 6e3
 #Mstar = 3.*constants.Msun
 #Rstar = 50.*constants.Rsun
 #kappa = 0.1
+#T_ion = 1e4
 
 # CSM mass and binary separation
 MCSM = 0.1 * constants.Msun
@@ -38,3 +39,8 @@ a_bin = 5. * Rstar
 
 t_arr, L_arr, Lwind_arr, v_arr, x_arr, t_BH = functions.evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_BB, r_disk_in)
 np.savetxt('prec_lightcurve.txt', np.c_[t_arr/86400., L_arr, v_arr/1e5], header='time [day], lum [erg/s], vel [km/s]', fmt='%.8g')
+
+# output diagnostics
+t_prec, L_prec = functions.calc_LC_Lt(t_arr, L_arr, t_BH)
+v_prec = max(v_arr)/1e5
+print("time=%.3e day, lum=%.3e erg/s, vel=%.3e km/s" % (t_prec, L_prec, v_prec))
