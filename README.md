@@ -7,4 +7,4 @@ Main parameters: (1) compact object mass, (2) progenitor mass, (3) progenitor ra
 
 "prec_outburst_lc.py" outputs a time-dependent light curve for a given set of parameters.
 
-If one aims to interpret a certain precursor, a way is to run the former "prec_outburst_grid.py" (or see our paper Tsuna+24) to narrow down the parameters that reproduce the characteristic quantity, and then run "prec_outburst_lc.py" for a more detailed fit to the light curve.
+If one aims to interpret a certain precursor, a way is to run the former "prec_outburst_grid.py" (or see our paper Tsuna+24, ApJ 966 30) to narrow down the parameters that reproduce the characteristic quantity, and then run "prec_outburst_lc.py" for a more detailed fit to the light curve.
