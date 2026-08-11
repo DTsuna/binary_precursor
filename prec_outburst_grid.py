@@ -49,7 +49,7 @@ for i,MCSM in enumerate(MCSM_arr):
 	for j,a_bin in enumerate(a_bin_arr):
 		MCSM_prec[i,j] = MCSM / constants.Msun
 		abin_prec[i,j] = a_bin / Rstar
-		t_arr, L_arr, Lwind_arr, v_arr, x_arr, t_BH = functions.evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_BB, r_disk_in)
+		t_arr, L_arr, Lwind_arr, v_arr, x_arr, t_BH, Teff_arr = functions.evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_BB, r_disk_in)
 		t_prec[i,j], L_prec[i,j] = functions.calc_LC_Lt(t_arr, L_arr, t_BH)
 		v_prec[i,j] = max(v_arr)/1e5
 		print("time=%.3e day, lum=%.3e erg/s, vel=%.3e km/s" % (t_prec[i,j], L_prec[i,j], v_prec[i,j])) 

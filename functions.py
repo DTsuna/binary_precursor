@@ -49,6 +49,7 @@ def evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_
 	L_arr = np.zeros(len(t_arr)-1) 
 	Lwind_arr = np.zeros(len(t_arr)-1) 
 	x_arr = np.zeros(len(t_arr)-1)
+	Teff_arr = np.zeros(len(t_arr)-1) 
 
 	# initial condition
 	i = 0
@@ -87,6 +88,7 @@ def evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_
 			Lrad = Eint/tdiff/x**2
 			Eint += dt * (-pdV + Lwind - Lrad)
 			x = min(1.0, math.sqrt(Lrad/4./math.pi/r**2/constants.sigma_SB/T_ion**4))
+			Teff = (Lrad/4./math.pi/r**2/constants.sigma_SB)**(0.25)
 			if t > 0.0:
 				t_rec = t
 			if BH_flag==0 and Lwind > 0.0:
@@ -117,6 +119,7 @@ def evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_
 			v += 4.*math.pi/3.*(xr**3-xr_old**3)*eps_int/(3.*MCSM*v) / 0.6 # 0.6 comes from Ekin=0.3MCSM v^2 
 			Eint = eps_int*(4.*math.pi/3.)*(xr)**3
 			Lrad = 4.*math.pi*(xr)**2*constants.sigma_SB*T_ion**4 
+			Teff = T_ion
 		else:
 			raise ValueError("Invalid ionization locaton: x=%g at t=%g day" % (x, t/86400.))
 		
@@ -127,7 +130,8 @@ def evolve_CSM(Mstar, MCO, Rstar, kappa, a_bin, MCSM, T_ion, xi, x_ion_floor, p_
 			Eint_arr[i] = Eint
 			L_arr[i] = Lrad
 			Lwind_arr[i] = Lwind
+			Teff_arr[i] = Teff
 			x_arr[i] = x
 			i += 1
 		t += dt
-	return t_arr[:-1], L_arr, Lwind_arr, v_arr, x_arr, t_BH
+	return t_arr[:-1], L_arr, Lwind_arr, v_arr, x_arr, t_BH, Teff_arr
